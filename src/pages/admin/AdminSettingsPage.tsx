@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { doc, setDoc } from "firebase/firestore";
 import { db } from "@/lib/firebase";
 import { useAppSettings } from "@/contexts/AppSettingsContext";
@@ -17,8 +17,12 @@ export default function AdminSettingsPage() {
   const [socialLinks, setSocialLinks] = useState<SocialLink[]>(settings.socialLinks?.length ? settings.socialLinks : [{ name: "", link: "" }]);
   const [usefulLinks, setUsefulLinks] = useState<UsefulLink[]>(settings.usefulLinks?.length ? settings.usefulLinks : [{ name: "", link: "" }]);
   const [saving, setSaving] = useState(false);
+  const initializedRef = useRef(false);
 
   useEffect(() => {
+    if (initializedRef.current) return;
+    if (!settings.appName && !settings.appLogo && !settings.youtubeChannel) return;
+    initializedRef.current = true;
     setAppName(settings.appName);
     setAppLogo(settings.appLogo);
     setYoutubeChannel(settings.youtubeChannel);
