@@ -245,17 +245,18 @@ export default function AuthPage() {
                 <ImagePreview file={screenshotFile} />
               </>
             ) : (
-              <div className="flex gap-2">
+              <div className="flex gap-1.5 sm:gap-2">
                 <input
                   type="url"
                   placeholder="https://i.postimg.cc/..."
                   value={screenshotUrl}
                   onChange={(e) => setScreenshotUrl(e.target.value)}
-                  className="flex-1 px-4 py-3 rounded-md bg-card border border-border text-foreground text-sm"
+                  className="flex-1 min-w-0 px-4 py-3 rounded-md bg-card border border-border text-foreground text-sm"
                 />
-                <a href="https://postimages.org" target="_blank" rel="noopener noreferrer"
-                  className="flex-shrink-0 px-3 py-3 rounded-md bg-primary/10 border border-primary/20 text-primary text-xs font-medium hover:bg-primary/20 transition-colors flex items-center gap-1.5 whitespace-nowrap">
-                  <ExternalLink className="h-3 w-3" /> Get URL
+                <a href="https://postimages.org" target="_blank" rel="noopener noreferrer" title="Get Image URL"
+                  className="flex-shrink-0 px-2 sm:px-3 py-3 rounded-md bg-primary/10 border border-primary/20 text-primary text-xs font-medium hover:bg-primary/20 transition-colors flex items-center gap-1 sm:gap-1.5 whitespace-nowrap">
+                  <ExternalLink className="h-3.5 w-3.5 sm:h-3 sm:w-3" />
+                  <span className="hidden sm:inline">Get URL</span>
                 </a>
               </div>
             )}

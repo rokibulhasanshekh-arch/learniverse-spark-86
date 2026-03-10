@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { ExternalLink, X } from "lucide-react";
 
 interface ImageUrlInputProps {
@@ -12,7 +11,7 @@ export function ImageUrlInput({ label, value, onChange, placeholder = "https://.
   return (
     <div className="space-y-1.5">
       {label && <label className="text-xs font-medium text-muted-foreground">{label}</label>}
-      <div className="flex gap-2">
+      <div className="flex gap-1.5 sm:gap-2">
         <input
           type="url"
           value={value}
@@ -24,10 +23,11 @@ export function ImageUrlInput({ label, value, onChange, placeholder = "https://.
           href="https://postimages.org"
           target="_blank"
           rel="noopener noreferrer"
-          className="flex-shrink-0 px-3 py-2.5 rounded-lg bg-primary/10 border border-primary/20 text-primary text-xs font-medium hover:bg-primary/20 transition-colors flex items-center gap-1.5 whitespace-nowrap"
+          title="Get Image URL"
+          className="flex-shrink-0 px-2 sm:px-3 py-2.5 rounded-lg bg-primary/10 border border-primary/20 text-primary text-xs font-medium hover:bg-primary/20 transition-colors flex items-center gap-1 sm:gap-1.5 whitespace-nowrap"
         >
-          <ExternalLink className="h-3 w-3" />
-          Get URL
+          <ExternalLink className="h-3.5 w-3.5 sm:h-3 sm:w-3" />
+          <span className="hidden sm:inline">Get URL</span>
         </a>
         {value && (
           <button

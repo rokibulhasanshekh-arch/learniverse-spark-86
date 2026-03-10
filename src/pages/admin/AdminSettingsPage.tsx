@@ -7,6 +7,17 @@ import { toast } from "sonner";
 import { X, Plus, Save, Settings, CreditCard, Share2, Link2 } from "lucide-react";
 import { ImageUrlInput } from "@/components/ImageUrlInput";
 
+/* ── Section wrapper — defined OUTSIDE component to prevent re-mount ── */
+const FormSection = ({ icon: Icon, title, children }: { icon: any; title: string; children: React.ReactNode }) => (
+  <div className="rounded-xl border border-border bg-card/50 overflow-hidden">
+    <div className="flex items-center gap-2 px-4 py-2.5 bg-accent/30 border-b border-border">
+      <Icon className="h-4 w-4 text-primary" />
+      <span className="text-sm font-medium text-foreground">{title}</span>
+    </div>
+    <div className="p-4 space-y-3">{children}</div>
+  </div>
+);
+
 export default function AdminSettingsPage() {
   const settings = useAppSettings();
   const [appName, setAppName] = useState(settings.appName);
@@ -47,16 +58,6 @@ export default function AdminSettingsPage() {
     }
     setSaving(false);
   };
-
-  const FormSection = ({ icon: Icon, title, children }: { icon: any; title: string; children: React.ReactNode }) => (
-    <div className="rounded-xl border border-border bg-card/50 overflow-hidden">
-      <div className="flex items-center gap-2 px-4 py-2.5 bg-accent/30 border-b border-border">
-        <Icon className="h-4 w-4 text-primary" />
-        <span className="text-sm font-medium text-foreground">{title}</span>
-      </div>
-      <div className="p-4 space-y-3">{children}</div>
-    </div>
-  );
 
   return (
     <div className="p-3 sm:p-4 max-w-2xl mx-auto animate-fade-in overflow-x-hidden pb-8 box-border w-full">
